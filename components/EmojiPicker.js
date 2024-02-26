@@ -6,7 +6,7 @@ export default function EmojiPicker({ isVisible, children, onClose }) {
     <Modal animationType="slide" transparent={true} visible={isVisible}>
       <View style={styles.modalContent}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Choose a sticker</Text>
+          <Text style={styles.title}>Choose a sticker 選擇貼紙</Text>
           <Pressable onPress={onClose}>
             <MaterialIcons name="close" color="#fff" size={22} />
           </Pressable>
@@ -19,16 +19,16 @@ export default function EmojiPicker({ isVisible, children, onClose }) {
 
 const styles = StyleSheet.create({
   modalContent: {
-    height: '25%',
+    height: 200,
     width: '100%',
-    backgroundColor: '#25292e',
+    backgroundColor: '#25292E',
     borderTopRightRadius: 18,
     borderTopLeftRadius: 18,
     position: 'absolute',
     bottom: 0,
   },
   titleContainer: {
-    height: '16%',
+    height: 42,
     backgroundColor: '#464C55',
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
@@ -38,14 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    color: '#fff',
+    color: '#FFF',
     fontSize: 16,
-  },
-  pickerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 50,
-    paddingVertical: 20,
   },
 });

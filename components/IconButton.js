@@ -4,7 +4,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 export default function IconButton({ icon, label, onPress }) {
   return (
     <Pressable style={styles.iconButton} onPress={onPress}>
-      <MaterialIcons name={icon} size={24} color="#fff" />
+      <MaterialIcons name={icon} size={24} color="#FFF" />
       <Text style={styles.iconButtonLabel}>{label}</Text>
     </Pressable>
   );
@@ -12,11 +12,14 @@ export default function IconButton({ icon, label, onPress }) {
 
 const styles = StyleSheet.create({
   iconButton: {
+    width: 84,
+    height: 84,
     justifyContent: 'center',
     alignItems: 'center',
   },
   iconButtonLabel: {
-    color: '#fff',
-    marginTop: 12,
+    marginTop: 6,
+    color: '#FFF',
+    fontSize: 16,
   },
 });

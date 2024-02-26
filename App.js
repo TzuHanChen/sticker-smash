@@ -1,4 +1,4 @@
-import { StyleSheet, View, Platform } from 'react-native';
+import { StyleSheet, View, Platform, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useState, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
@@ -35,12 +35,13 @@ export default function App() {
       setSelectedImage(result.assets[0].uri);
       setShowAppOptions(true);
     } else {
-      alert('You did not select any image.');
+      alert('You did not select any image. 您並未選擇任何圖片。');
     }
   }
 
   const onReset = () => {
     setShowAppOptions(false);
+    setPickedEmoji(null);
   };
 
   const onAddSticker = () => {
@@ -65,7 +66,7 @@ export default function App() {
 
         await MediaLibrary.saveToLibraryAsync(localUri);
         if (localUri) {
-          alert("Saved!");
+          alert("Saved image on your device! 已儲存圖片到您的裝置！");
         }
       } catch (e) {
         console.log(e);
@@ -103,16 +104,19 @@ export default function App() {
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
           <View style={styles.optionsRow}>
-            <IconButton icon="refresh" label="Reset" onPress={onReset} />
+            <IconButton icon="refresh" label="Reset 重置" onPress={onReset} />
             <CircleButton onPress={onAddSticker} />
-            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
+            <IconButton icon="save-alt" label="Save 儲存" onPress={onSaveImageAsync} />
           </View>
+          {pickedEmoji &&
+            <Text style={styles.optionsText}>
+              Drag to move, double tap to scale<br />拖曳貼紙可移動，點擊貼紙兩次可縮放</Text>}
         </View>
       ) : (
         <View style={styles.footerContainer}>
-          <Button label='Choose a photo' theme='primary'
+          <Button label='Choose a photo 選擇圖片' theme='primary'
             onPress={pickImageAsync} />
-          <Button label='Use this photo'
+          <Button label='Use this photo 使用現在的圖片'
             onPress={() => setShowAppOptions(true)} />
         </View>
       )}
@@ -130,24 +134,36 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#25292E',
+    flex: 1,
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   imageContainer: {
+    marginVertical: 18,
     flex: 1,
-    paddingTop: 60,
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   footerContainer: {
-    flex: 1 / 3,
-    alignItems: 'center',
+    height: 135,
   },
   optionsContainer: {
-    position: 'absolute',
-    bottom: 60,
+    width: 320,
+    height: 135,
   },
   optionsRow: {
-    alignItems: 'center',
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
+  optionsText: {
+    marginTop: 6,
+    borderRadius: 10,
+    backgroundColor: '#464C55',
+    paddingVertical: 3,
+    color: '#FFF',
+    fontSize: 12,
+    textAlign: 'center',
+  }
 });
