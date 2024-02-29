@@ -7,6 +7,7 @@ import * as MediaLibrary from 'expo-media-library';
 import { captureRef } from 'react-native-view-shot';
 import domtoimage from 'dom-to-image';
 
+import palette from './palette';
 import ImageViewer from './components/imageViewer';
 import Button from './components/Button';
 import CircleButton from './components/CircleButton';
@@ -24,6 +25,7 @@ export default function App() {
   const [pickedEmoji, setPickedEmoji] = useState(null);
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const imageRef = useRef();
+  const [activeButton, setActiveButton] = useState('');
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -40,6 +42,7 @@ export default function App() {
   }
 
   const onReset = () => {
+    setSelectedImage(null);
     setShowAppOptions(false);
     setPickedEmoji(null);
   };
@@ -92,7 +95,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
-        <View ref={imageRef} collapsable={false}>
+        <View style={styles.screenshotArea} ref={imageRef} collapsable={false}>
           <ImageViewer
             placeholderImage={PlaceholderImage}
             selectedImage={selectedImage} />
@@ -104,9 +107,20 @@ export default function App() {
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
           <View style={styles.optionsRow}>
-            <IconButton icon="refresh" label="Reset 重置" onPress={onReset} />
-            <CircleButton onPress={onAddSticker} />
-            <IconButton icon="save-alt" label="Save 儲存" onPress={onSaveImageAsync} />
+            <IconButton icon="refresh" label="Reset 重置"
+              id="reset" active={activeButton}
+              onPressIn={() => setActiveButton("reset")}
+              onPressOut={() => setActiveButton('')}
+              onPress={onReset} />
+            <CircleButton id="add-sticker" active={activeButton}
+              onPressIn={() => setActiveButton("add-sticker")}
+              onPressOut={() => setActiveButton('')}
+              onPress={onAddSticker} />
+            <IconButton icon="save-alt" label="Save 儲存"
+              id="save" active={activeButton}
+              onPressIn={() => setActiveButton("save")}
+              onPressOut={() => setActiveButton('')}
+              onPress={onSaveImageAsync} />
           </View>
           {pickedEmoji &&
             <Text style={styles.optionsText}>
@@ -115,8 +129,14 @@ export default function App() {
       ) : (
         <View style={styles.footerContainer}>
           <Button label='Choose a photo 選擇圖片' theme='primary'
+            id="choose-a-photo" active={activeButton}
+            onPressIn={() => setActiveButton("choose-a-photo")}
+            onPressOut={() => setActiveButton('')}
             onPress={pickImageAsync} />
           <Button label='Use this photo 使用現在的圖片'
+            id="use-this-photo" active={activeButton}
+            onPressIn={() => setActiveButton("use-this-photo")}
+            onPressOut={() => setActiveButton('')}
             onPress={() => setShowAppOptions(true)} />
         </View>
       )}
@@ -134,7 +154,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#25292E',
+    backgroundColor: palette['dark-gray'],
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -145,12 +165,20 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
   },
+  screenshotArea: {
+    width: 320,
+    height: 440,
+  },
   footerContainer: {
-    height: 135,
+    width: 320,
+    height: 144,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 9
   },
   optionsContainer: {
     width: 320,
-    height: 135,
+    height: 144,
   },
   optionsRow: {
     flexDirection: 'row',
@@ -158,11 +186,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   optionsText: {
-    marginTop: 6,
+    marginTop: 12,
     borderRadius: 10,
-    backgroundColor: '#464C55',
-    paddingVertical: 3,
-    color: '#FFF',
+    color: palette.white,
     fontSize: 12,
     textAlign: 'center',
   }

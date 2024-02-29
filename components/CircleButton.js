@@ -1,11 +1,15 @@
 import { View, Pressable, StyleSheet } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-export default function CircleButton({ onPress }) {
+import palette from '../palette';
+
+export default function CircleButton({ id, active, onPressIn, onPressOut, onPress }) {
   return (
     <View style={styles.circleButtonContainer}>
-      <Pressable style={styles.circleButton} onPress={onPress}>
-        <MaterialIcons name="add" size={36} color="#25292E" />
+      <Pressable style={[styles.circleButton,
+      { backgroundColor: id == active ? palette.yellow : palette.white }]}
+        onPressIn={onPressIn} onPressOut={onPressOut} onPress={onPress}>
+        <MaterialIcons name="add" size={36} color={palette['dark-gray']} />
       </Pressable>
     </View>
   );
@@ -23,6 +27,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 42,
-    backgroundColor: '#FFF',
   },
 });

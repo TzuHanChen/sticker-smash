@@ -1,6 +1,8 @@
 import { Modal, View, Text, Pressable, StyleSheet } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
+import palette from '../palette';
+
 export default function EmojiPicker({ isVisible, children, onClose }) {
   return (
     <Modal animationType="slide" transparent={true} visible={isVisible}>
@@ -8,7 +10,7 @@ export default function EmojiPicker({ isVisible, children, onClose }) {
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Choose a sticker 選擇貼紙</Text>
           <Pressable onPress={onClose}>
-            <MaterialIcons name="close" color="#fff" size={22} />
+            <MaterialIcons name="close" color={palette.white} size={24} />
           </Pressable>
         </View>
         {children}
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
   modalContent: {
     height: 200,
     width: '100%',
-    backgroundColor: '#25292E',
+    backgroundColor: palette['dark-gray'],
     borderTopRightRadius: 18,
     borderTopLeftRadius: 18,
     position: 'absolute',
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     height: 42,
-    backgroundColor: '#464C55',
+    backgroundColor: palette['light-gray'],
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
     paddingHorizontal: 20,
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    color: '#FFF',
+    color: palette.white,
     fontSize: 16,
   },
 });
