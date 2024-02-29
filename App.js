@@ -123,8 +123,12 @@ export default function App() {
               onPress={onSaveImageAsync} />
           </View>
           {pickedEmoji &&
-            <Text style={styles.optionsText}>
-              Drag to move, double tap to scale<br />拖曳貼紙可移動，點擊貼紙兩次可縮放</Text>}
+            <View>
+              <Text style={styles.optionsText}>
+                Drag to move, double tap to scale</Text>
+              <Text style={styles.optionsText}>
+                拖曳貼紙可移動，點擊貼紙兩次可縮放</Text>
+            </View>}
         </View>
       ) : (
         <View style={styles.footerContainer}>
@@ -171,14 +175,17 @@ const styles = StyleSheet.create({
   },
   footerContainer: {
     width: 320,
-    height: 144,
+    height: 150,
     display: 'flex',
     flexDirection: 'column',
     gap: 9
   },
   optionsContainer: {
     width: 320,
-    height: 144,
+    height: 150,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 9
   },
   optionsRow: {
     flexDirection: 'row',
@@ -186,10 +193,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   optionsText: {
-    marginTop: 12,
-    borderRadius: 10,
     color: palette.white,
-    fontSize: 12,
+    fontSize: 16,
     textAlign: 'center',
   }
 });

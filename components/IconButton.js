@@ -16,7 +16,7 @@ export default function IconButton({ icon, label, id, active, onPressIn, onPress
 
 const styles = StyleSheet.create({
   iconButton: {
-    width: 96,
+    width: 108,
     height: 84,
     borderRadius: 10,
     justifyContent: 'center',
