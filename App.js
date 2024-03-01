@@ -116,7 +116,7 @@ export default function App() {
               onPressIn={() => setActiveButton("add-sticker")}
               onPressOut={() => setActiveButton('')}
               onPress={onAddSticker} />
-            <IconButton icon="save-alt" label="Save 儲存"
+            <IconButton icon="save-alt" label="Save 保存"
               id="save" active={activeButton}
               onPressIn={() => setActiveButton("save")}
               onPressOut={() => setActiveButton('')}
