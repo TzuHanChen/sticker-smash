@@ -14,7 +14,7 @@
 
 ## 建立一個螢幕畫面 Build a screen
 
-用 StyleSheet, View, Image, Pressable, Text 建立一個畫面，再加入圖示
+用 `StyleSheet, View, Image, Pressable, Text` 建立一個畫面，再加入圖示
 
 ## 使用圖片選擇器 Use an image picker
 
@@ -28,9 +28,9 @@
 
 使用者選好圖片之後，兩個按鈕換成三個按鈕，分別是重置、新增貼紙、保存
 
-用 Modal 製作一個彈出視窗，按下新增貼紙按鈕就會開啟這個彈出視窗，按下關閉按鈕就關閉
+用 `Modal` 製作一個彈出視窗，按下新增貼紙按鈕就會開啟這個彈出視窗，按下關閉按鈕就關閉
 
-在彈出視窗中，用 FlatList 列出所有貼紙，使用者選擇貼紙後，圖片上面就會有貼紙
+在彈出視窗中，用 `FlatList` 列出所有貼紙，使用者選擇貼紙後，圖片上面就會有貼紙
 
 ## 增加手勢 Add gestures
 
@@ -42,13 +42,13 @@
 
 用 react-native-view-sho 截圖，用 expo-media-library 存取行動裝置的媒體庫
 
-先取得存取媒體庫的許可，再設定要截圖的區塊 (圖片和貼紙的上層 View)
+先取得存取媒體庫的許可，再設定要截圖的區塊 (圖片和貼紙的上層 `View`)
 
 使用者按下保存按鈕之後，截圖、保存到媒體庫、顯示成功通知
 
 ## 處理平台差異 Handle platform differences
 
-用 Platform 偵測平台，如果是 web 就用 dom-to-image 截圖、用 `<a>` 下載圖片
+用 `Platform` 偵測平台，如果是 web 就用 dom-to-image 截圖、用 `<a>` 下載圖片
 
 ## 調整狀態列、載入畫面、應用程式圖示 Configure status bar, splash screen and app icon
 
