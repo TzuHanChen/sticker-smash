@@ -1,4 +1,4 @@
-# 發布網站
+# 輸出網站
 
 編輯 app.json，調整網站輸出格式
 
@@ -15,9 +15,9 @@
 
 output 有三種選項
 
-* single : 預設選項，輸出 SPA，index.html 不會有內容
-* server : 建立 client 和 server 資料夾，client 檔案是獨立 html 檔案，server 檔案是獨立 js 檔案、用來部署到自訂 Node.js 伺服器
-* static : 為每個路徑輸出獨立 html 檔案
+* single：預設選項，輸出 SPA，index.html 不會有內容
+* server：建立 client 和 server 資料夾，client 檔案是獨立 html 檔案，server 檔案是獨立 js 檔案、用來部署到自訂 Node.js 伺服器
+* static：為每個路徑輸出獨立 html 檔案
 
 建立靜態打包檔案
 
@@ -40,38 +40,4 @@ npx serve dist --single
 npx serve dist
 ```
 
-部署到第三方服務，可用 Netlify, Vercel, AWS Amplify Console, Firebase hosting, GitHub Pages 等等
-
-使用 Vercel 部署的步驟如下：
-
-安裝 Vercel CLI
-
-```bash
-npm install -g vercel@latest
-```
-
-新增 vercel.json，處理 SPA 的重新導向設定
-
-```json
-{
-  "buildCommand": "expo export -p web",
-  "outputDirectory": "dist",
-  "devCommand": "expo",
-  "cleanUrls": true,
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/:path*",
-      "destination": "/"
-    }
-  ]
-}
-```
-
-部署網站
-
-```bash
-vercel
-```
-
-> 下一個筆記：[發布應用程式](/notes/07-publish-app.md)
+> 下一個筆記：[部署網站](/notes/07-deploy-website.md)
