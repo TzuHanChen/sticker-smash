@@ -46,4 +46,4 @@ export default {
 
 移除手機上不支援的 `<br />`
 
-> 下一個筆記：[發布網站](/notes/06-publish-website.md)
+> 下一個筆記：[輸出網站](/notes/06-export-website.md)

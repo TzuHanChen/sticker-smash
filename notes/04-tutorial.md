@@ -18,7 +18,7 @@
 
 ## 使用圖片選擇器 Use an image picker
 
-用 expo-image-picker 存取裝置的媒體庫
+用 `expo-image-picker` 存取裝置的媒體庫
 
 使用者有兩個按鈕可以按，一個是選擇自己的圖片，另一個是選擇預設圖片
 
@@ -34,13 +34,13 @@
 
 ## 增加手勢 Add gestures
 
-用 react-native-gesture-handler 偵測手勢、用 react-native-reanimated 改變貼紙的尺寸和位置
+用 `react-native-gesture-handler` 偵測手勢、用 `react-native-reanimated` 改變貼紙的尺寸和位置
 
 使用者點擊貼紙兩次就會放大，拖曳貼紙就可以移動
 
 ## 截圖 Take a screenshot
 
-用 react-native-view-sho 截圖，用 expo-media-library 存取行動裝置的媒體庫
+用 `react-native-view-shot` 截圖，用 `expo-media-library` 存取行動裝置的媒體庫
 
 先取得存取媒體庫的許可，再設定要截圖的區塊 (圖片和貼紙的上層 `View`)
 
@@ -48,7 +48,7 @@
 
 ## 處理平台差異 Handle platform differences
 
-用 `Platform` 偵測平台，如果是 web 就用 dom-to-image 截圖、用 `<a>` 下載圖片
+用 `Platform` 偵測平台，如果是 web 就用 `dom-to-image` 截圖、用 `<a>` 下載圖片
 
 ## 調整狀態列、載入畫面、應用程式圖示 Configure status bar, splash screen and app icon
 
