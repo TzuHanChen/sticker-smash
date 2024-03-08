@@ -22,7 +22,7 @@ output 有三種選項
 建立靜態打包檔案
 
 ```bash
-npx expo export -p web
+npx expo export --platform web
 ```
 
 產出的檔案會在 dist 資料夾中
